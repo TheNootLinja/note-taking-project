@@ -15,9 +15,18 @@ function closeNoteDialog() {
     document.getElementById('noteDialog').close();
 }
 
+// Submits note
+function saveNote(event) {
+    event.preventDefault()
+}
+
 // Event listener to check that dom content has been loaded before
 // creating other event listeners.
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Event listener for submitting note form
+    document.getElementById('noteForm').addEventListener('submit', saveNote)
+
     // Event listener for user clicking off note dialog to close it
     document.getElementById('noteDialog').addEventListener('click', function(event){
         if(event.target === this) {
