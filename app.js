@@ -17,7 +17,14 @@ function closeNoteDialog() {
 
 // Submits note
 function saveNote(event) {
-    event.preventDefault()
+    event.preventDefault();
+    const title = document.getElementById('noteTitle').value.trim();
+    const content = document.getElementById('noteContent').value.trim();
+    notes.unshift({
+        id: generateId(),
+        title: title,
+        content: content
+    })
 }
 
 // Event listener to check that dom content has been loaded before
