@@ -25,10 +25,16 @@ function saveNote(event) {
         title: title,
         content: content
     })
+
+    saveNotes();
 }
 
 function generateId() {
     return Date.now().toString();
+}
+
+function saveNotes() {
+    localStorage.setItem('notesArr', JSON.stringify(notes))
 }
 
 // Event listener to check that dom content has been loaded before
