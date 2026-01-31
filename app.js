@@ -13,6 +13,7 @@ function openNoteDialog(){
 // Closes note dialog
 function closeNoteDialog() {
     document.getElementById('noteDialog').close();
+    document.getElementById('noteForm').reset();
 }
 
 // Submits note
@@ -27,6 +28,7 @@ function saveNote(event) {
     })
 
     saveNotes();
+    closeNoteDialog();
 }
 
 function generateId() {
