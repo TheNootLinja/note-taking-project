@@ -19,8 +19,10 @@ function closeNoteDialog() {
 // Submits note
 function saveNote(event) {
     event.preventDefault();
+    // Get title and content from form
     const title = document.getElementById('noteTitle').value.trim();
     const content = document.getElementById('noteContent').value.trim();
+    // Add users note to the beginning of the notes array
     notes.unshift({
         id: generateId(),
         title: title,
@@ -31,10 +33,12 @@ function saveNote(event) {
     closeNoteDialog();
 }
 
+// Generates ID from turning date to string
 function generateId() {
     return Date.now().toString();
 }
 
+// Save the note array to local storage
 function saveNotes() {
     localStorage.setItem('notesArr', JSON.stringify(notes))
 }
