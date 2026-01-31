@@ -27,6 +27,10 @@ function saveNote(event) {
     })
 }
 
+function generateId() {
+    return Date.now().toString();
+}
+
 // Event listener to check that dom content has been loaded before
 // creating other event listeners.
 document.addEventListener('DOMContentLoaded', function() {
