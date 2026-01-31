@@ -12,3 +12,11 @@ function openNoteDialog(){
 function closeNoteDialog() {
     document.getElementById('noteDialog').close();
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('noteDialog').addEventListener('click', function(event){
+        if(event.target === this) {
+            closeNoteDialog();
+        }
+    })
+})
