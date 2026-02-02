@@ -1,6 +1,5 @@
 // Array of users notes
 let notes = [];
-renderNotes();
 
 // Opens note dialog
 function openNoteDialog(){
@@ -58,7 +57,6 @@ function renderNotes() {
         `
         return
     }
-    
     notesContainer.innerHTML = notes.map(note => `
         <div>
             <h3 class="note-title">${note.title}</h3>
@@ -67,10 +65,16 @@ function renderNotes() {
         `).join('')
 }
 
+function loadNotes() {
+    const savedNotes = localStorage.getItem('notesArr');
+    return savedNotes ? JSON.parse(savedNotes) : []
+}
+
 // Event listener to check that dom content has been loaded before
 // creating other event listeners.
 document.addEventListener('DOMContentLoaded', function() {
-
+    notes = loadNotes();
+    renderNotes();
     // Event listener for submitting note form
     document.getElementById('noteForm').addEventListener('submit', saveNote)
 
