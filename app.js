@@ -1,5 +1,6 @@
 // Array of users notes
 let notes = [];
+renderNotes();
 
 // Opens note dialog
 function openNoteDialog(){
@@ -31,6 +32,7 @@ function saveNote(event) {
 
     saveNotes();
     closeNoteDialog();
+    renderNotes();
 }
 
 // Generates ID from turning date to string
@@ -41,6 +43,28 @@ function generateId() {
 // Save the note array to local storage
 function saveNotes() {
     localStorage.setItem('notesArr', JSON.stringify(notes))
+}
+
+function renderNotes() {
+    const notesContainer = document.getElementById('notesContainer');
+
+    if(notes.length === 0) {
+        notesContainer.innerHTML = `
+            <div class ="empty-state">
+                <h2>No notes yet</h2>
+                <p>Create your first note to get started!</p>
+                <button class="add-note-btn" onclick="openNoteDialog()">+ Add Your First Note</button>
+            </div>
+        `
+        return
+    }
+    
+    notesContainer.innerHTML = notes.map(note => `
+        <div>
+            <h3 class="note-title">${note.title}</h3>
+            <p class="note-content">${note.content}</p>
+        </div>
+        `).join('')
 }
 
 // Event listener to check that dom content has been loaded before
